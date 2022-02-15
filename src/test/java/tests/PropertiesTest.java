@@ -1,6 +1,7 @@
-package readProperties;
+package tests;
 
 import org.testng.annotations.Test;
+import readProperties.ConfigProvider;
 import tests.BaseTest;
 
 import java.io.IOException;

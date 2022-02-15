@@ -1,4 +1,4 @@
-package apiUtils;
+package tests;
 
 
 import apiAdapters.ProjectAdapter;
@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
 
 public class SuiteTest {
 
-    @Test
+   /* @Test
     public void createNewProjectApiTest(){
         Project project =  Project.builder()
                 .title("Home")
@@ -66,7 +66,7 @@ public class SuiteTest {
                 .build();
 
         assertEquals(actual, expected);
-    }
+    }*/
 
 }
 
