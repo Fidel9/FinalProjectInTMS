@@ -51,6 +51,18 @@ public class InvitesPage extends BasePage{
     @FindBy(xpath = "//div[@class='form-control-feedback']")//возможна ошибка из за скрытого текста
     private WebElement theUserAlreadyExists;
 
+
+
+    @FindBy(xpath = "//span[contains(text(),'faker@faker.faker')]//following::a[@class='btn btn-dropdown']")
+    private WebElement dropdownRevokeNewUser;
+
+    @FindBy(xpath = "//a[@class='text-danger action-revoke']")
+    private WebElement selectRevoke;
+
+    @FindBy(xpath = "//button[@class='btn btn-danger']")
+    private WebElement buttonRevoke;
+
+
     public InvitesPage() {
         PageFactory.initElements(driver,this);
     }
@@ -69,6 +81,12 @@ public class InvitesPage extends BasePage{
         searchFieldsForInvitesInInvitesPage.sendKeys(Keys.ENTER);
         return this;
     }
+    public InvitesPage revokeNewInvites(){
+        dropdownRevokeNewUser.click();
+        selectRevoke.click();
+        buttonRevoke.click();
+        return this;
+    }
 
     public String getErrorInvitesNewMember(){
         return validationsErrorMessageInviteNewMember.getText();
@@ -82,4 +100,6 @@ public class InvitesPage extends BasePage{
     public String getUserEmailFoundInInvitesPage(){return userEmailFoundInInvitesPage.getAttribute("innerText");}
     public String getTheUserAlreadyExist(){return theUserAlreadyExists.getText();}
 
+
 }
+

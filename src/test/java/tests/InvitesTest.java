@@ -44,6 +44,7 @@ public class InvitesTest extends BaseTest {
                 .openInvitesPage()
                 .inviteNewUserFields("faker@faker.faker", "QA engineer");
 
+
         Assert.assertEquals(invitesPage.getTheUserAlreadyExist(), "Sorry, but this member has been already invited.");
         log.info("Пользаватель уже существует");
         log.error(invitesPage.getTheUserAlreadyExist());
@@ -118,4 +119,19 @@ public class InvitesTest extends BaseTest {
         log.error(invitesPage.getErrorTitleMember());
     }
 
+    @Test
+    public void i_revokeNewInvites(){
+        log.info("Тест удаляет добавленого пользователя(faker@faker.faker) и проверяет" +
+                " в поисковой строке существует липользователь с таким адрессом ");
+        InvitesPage invitesPage = new LoginPage()
+                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .workspacePage()
+                .openInvitesPage()
+                .revokeNewInvites()
+                .searchForInvite("faker@faker.faker");
+
+        Assert.assertEquals(invitesPage.getErrorSearchForInvites(),"Invites matching your criteria are not found.");
+        log.info(invitesPage.getErrorSearchForInvites());
+    }
 }
+
