@@ -12,7 +12,7 @@ import readProperties.ConfigProvider;
 @Log4j2
 public class ProjTest extends BaseTest {
 
-    @Test()
+    @Test(priority = 1)
     public void a_checkProject() {
         log.info("Старт позитивного теста на проверку функционнальности");
         CreateSuiteAndCasePage createSuiteAndCasePage = new LoginPage()
@@ -32,7 +32,7 @@ public class ProjTest extends BaseTest {
         log.info(createSuiteAndCasePage.getStatisticRepo());
     }
 
-    @Test()
+    @Test(priority = 2)
     public void b_checkSearchField() {
         log.info("Поиск проекта по поисковой строке");
         ProjectsPage projectsPage = new LoginPage()
@@ -43,7 +43,7 @@ public class ProjTest extends BaseTest {
         log.info("Проект найден ");
     }
 
-    @Test()
+    @Test(priority = 3)
     public void c_checkIfExistProject() {
         log.info("Положителбный тест на создание  существующего проекта");
         NewProjectPage newProjectPage = new LoginPage()
@@ -58,7 +58,7 @@ public class ProjTest extends BaseTest {
         log.info("Проект уже существует");
     }
 
-    @Test()
+    @Test(priority = 4)
     public void d_checkDeleteProj(){
         log.info("Удаление существующего проекта");
         ProjectsPage projectsPage = new LoginPage()
@@ -72,7 +72,7 @@ public class ProjTest extends BaseTest {
     }
 
 
-    @Test()
+    @Test(priority = 5)
     public void e_checkProjectFieldsInCreateProj() {
         log.info("Проверяем проект на минимальное колличество букв");
         NewProjectPage newProjectPage = new LoginPage()
@@ -86,7 +86,7 @@ public class ProjTest extends BaseTest {
         log.error(newProjectPage.getErrorCode());
         log.info("Код должен содержать более двух цифр");
     }
-    @Test()
+    @Test(priority = 6)
     public void g_checkProjectFieldsInCreateProj_2() {
         log.info("Проверяем проект на вставление цифр в название проекта");
         NewProjectPage newProjectPage = new LoginPage()

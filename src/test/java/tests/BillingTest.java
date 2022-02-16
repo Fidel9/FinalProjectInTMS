@@ -10,7 +10,7 @@ import readProperties.ConfigProvider;
 @Log4j2
 public class BillingTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void a_checkCurrentSubscriptionsPlanNextChargesInBillingPage() {
         log.info("Позитивный тест. Поиск счета");
         BillingPage checkSubscriptionsPlan = new LoginPage()
@@ -21,7 +21,7 @@ public class BillingTest extends BaseTest {
         log.info(checkSubscriptionsPlan.getNextCharge() + " На счету $0");
     }
 
-    @Test
+    @Test(priority = 2)
     public void b_checkCurrentSubscriptionPlanInBillingPage() {
         log.info("Позитивный тест. Проверяем что подписка бесплатная");
         BillingPage checkSubscriptionsPlan = new LoginPage()
@@ -33,7 +33,7 @@ public class BillingTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 3)
     public void c_checkOpenPaymentWindowInPageBillingPage() {
         log.info("Позитивный тест. На поиск карты оплаты");
         PaymentPage paymentPage = new LoginPage()
@@ -47,7 +47,7 @@ public class BillingTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 4)
     public void d_checkBillingHistoryAmount() {
         log.info("Позитивный тест.Проверяем платежную историю");
         BillingHistoryPage billingHistoryPage = new LoginPage()
@@ -59,7 +59,7 @@ public class BillingTest extends BaseTest {
         log.info(billingHistoryPage.getAmountBillingHistory() + " $0.00");
     }
 
-    @Test
+    @Test(priority = 5)
     public void e_checkBillingHistoryStatus() {
         log.info("Позитивный тест.Проверяем  платежный статус");
         BillingHistoryPage billingHistoryPage = new LoginPage()

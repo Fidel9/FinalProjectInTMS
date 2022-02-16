@@ -9,7 +9,7 @@ import pages.SignUpPage;
 @Log4j2
 public class SignUpTest extends BaseTest{
 
-    @Test
+    @Test(priority = 1)
     public void signUpCheckInputEmail(){
         log.info("Негативный тест на проверку ввода существующего проекта. Проверяем регистрацию пользователя заполняем email");
         SignUpPage signUpPage= new LoginPage()
@@ -19,7 +19,7 @@ public class SignUpTest extends BaseTest{
         Assert.assertEquals(signUpPage.getErrorSignUpEmail(),"The email has already been taken.");
         log.error(signUpPage.getErrorSignUpEmail() + "Проект уже существует");
     }
-    @Test
+    @Test(priority = 2)
     public void signUpTestPassword(){
         log.info("Негативный тест на проверку пароля.Проверяем регистрацию пользователя заполняем email");
         SignUpPage signUpPage= new LoginPage()
@@ -30,7 +30,7 @@ public class SignUpTest extends BaseTest{
         log.error(signUpPage.getErrorSignUpPass() + "Пароль должен иметь  больше 8 символов ");
     }
 
-    @Test
+    @Test(priority = 3)
     public void signUpTestCheckBox(){
         log.info("Проверяем регистрацию пользователя заполняем checkBox");
         SignUpPage signUpPage= new LoginPage()
