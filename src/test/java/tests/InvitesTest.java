@@ -10,7 +10,7 @@ import readProperties.ConfigProvider;
 @Log4j2
 public class InvitesTest extends BaseTest {
 
-  /*  @Test(priority = 1)
+    @Test(priority = 1)
     public void a_invitesNewUser() {
         log.info("Положительный тест на проверку регистрации нового пользавателя и ограничиваем доступ");
         InvitesPage invitesPage = new LoginPage()
@@ -132,6 +132,6 @@ public class InvitesTest extends BaseTest {
 
         Assert.assertEquals(invitesPage.getErrorSearchForInvites(),"Invites matching your criteria are not found.");
         log.info(invitesPage.getErrorSearchForInvites());
-    }*/
+    }
 }
 
