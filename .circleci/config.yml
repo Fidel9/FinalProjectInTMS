@@ -1,46 +1,48 @@
-# Java Gradle CircleCI 2.0 configuration file
-# See: https://circleci.com/docs/2.0/language-java/
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+# https://circleci.com/docs/2.0/browser-testing/#selenium
 version: 2
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+  ui-tests:
     docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
-
-    environment:
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
-      TERM: dumb
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      - image: circleci/openjdk:11.0.8-jdk-browsers
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "pom.xml" }}
             - v1-dependencies-
-
-      - run: gradle dependencies
-
+      - run: mvn dependency:go-offline
       - save_cache:
           paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      # run tests!
-      - run: gradle test
+      - run:
+          name: Running tests
+          command: mvn clean test
+      - run:
+          name: Generate allure report
+          command: mvn allure:report
+          when: always
+      - store_test_results:
+          path: target/surefire-reports/junitreports
+          when: always
+      - store_artifacts:
+          path: target/site/allure-maven-plugin/
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - ui-tests
+  periodical:
+    triggers:
+      - schedule:
+          cron: "1 4,8,12 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - ui-tests
