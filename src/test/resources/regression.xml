@@ -3,16 +3,11 @@
 <suite thread-count="1" name="Test suite" parallel="tests">
     <test name="test 1">
         <classes>
+            <class name="tests.ProjTest"/>
+            <class name="tests.InvitesTest"/>
+            <class name="tests.BillingTest"/>
             <class name="tests.SignUpTest"/>
-
-        </classes>
-    </test> <!-- Test InvitesTest -->
-
-    <test name="test 2">
-        <classes>
             <class name="tests.LoginTest"/>
         </classes>
     </test> <!-- Test InvitesTest -->
-
-
 </suite>
