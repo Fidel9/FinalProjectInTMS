@@ -29,7 +29,9 @@ abstract public class BaseTest {
           //  driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
             BasePage.setDriver(driver);
-        }
+        context.setAttribute("driver", driver);
+
+    }
 
 
 
