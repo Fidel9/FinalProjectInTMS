@@ -20,7 +20,7 @@ public class BillingPage extends BasePage {
 
 
     public BillingPage() {
-        PageFactory.initElements(this.driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     public String getCurrentSubscriptionPlan() {return currentSubscriptionPlan.getText();}

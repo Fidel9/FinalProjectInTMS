@@ -12,7 +12,7 @@ public class BillingHistoryPage extends BasePage{
     private WebElement status;
 
     public BillingHistoryPage(){
-        PageFactory.initElements(this.driver, this);}
+        PageFactory.initElements(driver, this);}
 
     public String getAmountBillingHistory() {return amount.getText();}
     public String getStatusBillingHistory() {return status.getText();}
