@@ -2,6 +2,8 @@ package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,17 +22,16 @@ abstract public class BaseTest {
 
     @BeforeMethod(description = "Setup and start browser")
     public void setUp(ITestContext context) {
-        log.info("<----- начало теста ----->");
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        BasePage.setDriver(driver);
-        context.setAttribute("driver", driver);
+
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+          //  driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+            BasePage.setDriver(driver);
+        }
 
 
-    }
 
     @AfterMethod(alwaysRun = true, description = "Close")
     public void tearDown() {
