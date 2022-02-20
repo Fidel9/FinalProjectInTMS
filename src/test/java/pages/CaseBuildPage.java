@@ -1,5 +1,7 @@
 package pages;
 
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -25,10 +27,12 @@ public class CaseBuildPage extends BasePage {
     @FindBy(xpath = "//button[@id='save-case']")
     private WebElement clickSaveBuildRepoProject;
 
-    public CaseBuildPage() {
-        PageFactory.initElements(driver, this);
+    public CaseBuildPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(this.driver, this);
     }
 
+    @Step("create case repo")
     public CaseBuildPage createCaseRepo(String authorizationN) {
         authorization.sendKeys(authorizationN);
         dropdownStatusList.click();
@@ -38,9 +42,10 @@ public class CaseBuildPage extends BasePage {
         return this;
     }
 
+    @Step("open page repository")
     public RepositoryPage repository() {
         clickSaveBuildRepoProject.click();
-        return new RepositoryPage();
+        return new RepositoryPage(driver);
     }
 }
 

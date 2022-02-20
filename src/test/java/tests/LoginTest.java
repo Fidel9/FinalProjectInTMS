@@ -8,11 +8,12 @@ import pages.LoginPage;
 @Log4j2
 public class LoginTest extends BaseTest {
     @Test
-    public void checkProject3() {
+    public void checkLoginAndPassword() {
         log.info("Проверка теста  на авторизацию");
-        LoginPage loginMainPage = new LoginPage();
-        loginMainPage.login("faker@faker.ru", "12345");
+        LoginPage loginMainPage = new LoginPage(driver);
+        loginMainPage
 
+                .login("faker@faker.ru", "12345");
         Assert.assertEquals(loginMainPage.getErrorLoginOrPassword(), "These credentials do not match our records.");
         log.error(loginMainPage.getErrorLoginOrPassword());
         log.info("Авторизация не должна проходить при не правильном вводе адреса почты или пароля");

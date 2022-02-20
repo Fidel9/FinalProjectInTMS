@@ -14,7 +14,20 @@ import java.util.concurrent.TimeUnit;
 @Log4j2
 @Listeners(TestListener.class)
 abstract public class BaseTest {
-    protected WebDriver driver;
+    WebDriver driver;
+    LoginPage loginPage;
+    SignUpPage signUpPage;
+    BillingHistoryPage billingHistoryPage;
+    BillingPage billingPage;
+    CaseBuildPage caseBuildPage;
+    CreateSuiteAndCasePage createSuiteAndCasePage;
+    InvitesPage invitesPage;
+    LastRepoPage lastRepoPage;
+    NewProjectPage newProjectPage;
+    PaymentPage paymentPage;
+    ProjectsPage projectsPage;
+    RepositoryPage repositoryPage;
+    WorkspacePage workspacePage;
 
     @BeforeMethod(description = "Setup and start browser")
     public void setUp(ITestContext context) {
@@ -24,10 +37,22 @@ abstract public class BaseTest {
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-         BasePage.setDriver(driver);
+        // BasePage.setDriver(driver);
         context.setAttribute("driver", driver);
 
-
+        loginPage = new LoginPage(driver);
+        signUpPage = new SignUpPage(driver);
+        billingHistoryPage = new BillingHistoryPage(driver);
+        billingPage = new BillingPage(driver);
+        caseBuildPage = new CaseBuildPage(driver);
+        createSuiteAndCasePage = new CreateSuiteAndCasePage(driver);
+        invitesPage = new InvitesPage(driver);
+        lastRepoPage = new LastRepoPage(driver);
+        newProjectPage = new NewProjectPage(driver);
+        paymentPage = new PaymentPage(driver);
+        projectsPage = new ProjectsPage(driver);
+        repositoryPage = new RepositoryPage(driver);
+        workspacePage = new WorkspacePage(driver);
     }
 
     @AfterMethod(alwaysRun = true, description = "Close")
