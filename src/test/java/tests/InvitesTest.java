@@ -25,7 +25,7 @@ public class InvitesTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void searchNewInviteUser() {
+    public void b_searchNewInviteUser() {
         log.info("тест на поиск пользователей ");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
@@ -39,7 +39,7 @@ public class InvitesTest extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void checkAddExistsUser() {
+    public void c_checkAddExistsUser() {
         log.info("тест на создание существующего пользователя");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
