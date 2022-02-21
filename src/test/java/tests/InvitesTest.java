@@ -11,7 +11,7 @@ import readProperties.ConfigProvider;
 public class InvitesTest extends BaseTest {
 
     @Test(priority = 1)
-    public void invitesNewUser() {
+    public void a_invitesNewUser() {
         log.info("Положительный тест на проверку регистрации нового пользавателя и ограничиваем доступ");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
