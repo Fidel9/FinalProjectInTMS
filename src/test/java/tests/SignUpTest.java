@@ -13,7 +13,7 @@ public class SignUpTest extends BaseTest {
     public void signUpCheckInputEmail() {
         log.info("Негативный тест на проверку ввода существующего проекта. Проверяем регистрацию пользователя заполняем email");
         SignUpPage signUpPage = new LoginPage(driver)
-
+                .open()
                 .openSignUp()
                 .openSignUpPageAndInputEmailAndPassword("test@test.com", "12345678", "12345678");
 
@@ -25,7 +25,7 @@ public class SignUpTest extends BaseTest {
     public void signUpTestPassword() {
         log.info("Негативный тест на проверку пароля.Проверяем регистрацию пользователя заполняем email");
         SignUpPage signUpPage = new LoginPage(driver)
-
+                .open()
                 .openSignUp()
                 .openSignUpPageAndInputEmailAndPassword("fake@fake.ru", "12345", "12345");
 
@@ -37,7 +37,7 @@ public class SignUpTest extends BaseTest {
     public void signUpTestCheckBox() {
         log.info("Проверяем регистрацию пользователя заполняем checkBox");
         SignUpPage signUpPage = new LoginPage(driver)
-
+                .open()
                 .openSignUp()
                 .openSignUpPageAndInputEmailAndPassword("faker@faker.ru", "12345678", "12345678");
 

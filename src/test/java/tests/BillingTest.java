@@ -11,10 +11,10 @@ import readProperties.ConfigProvider;
 public class BillingTest extends BaseTest {
 
     @Test(priority = 1)
-    public void a_checkCurrentSubscriptionsPlanNextChargesInBillingPage() {
+    public void checkCurrentSubscriptionsPlanNextChargesInBillingPage() {
         log.info("Позитивный тест. Поиск счета и проверяе сумму на счете");
         BillingPage checkSubscriptionsPlan = new LoginPage(driver)
-
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .openBillingPage();
 
@@ -23,9 +23,10 @@ public class BillingTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void b_checkCurrentSubscriptionPlanInBillingPage() {
+    public void checkCurrentSubscriptionPlanInBillingPage() {
         log.info("Позитивный тест. Проверяем что подписка бесплатная");
         BillingPage checkSubscriptionsPlan = new LoginPage(driver)
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .openBillingPage();
 
@@ -35,10 +36,10 @@ public class BillingTest extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void c_checkOpenPaymentWindowInPageBillingPage() {
+    public void checkOpenPaymentWindowInPageBillingPage() {
         log.info("Позитивный тест. На поиск карты оплаты");
         PaymentPage paymentPage = new LoginPage(driver)
-
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .openBillingPage()
                 .openPaymentMethods()
@@ -50,10 +51,10 @@ public class BillingTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void d_checkBillingHistoryAmount() {
+    public void checkBillingHistoryAmount() {
         log.info("Позитивный тест.Проверяем платежную историю");
         BillingHistoryPage billingHistoryPage = new LoginPage(driver)
-
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .openBillingPage()
                 .openBillingHistory();
@@ -63,10 +64,10 @@ public class BillingTest extends BaseTest {
     }
 
     @Test(priority = 5)
-    public void e_checkBillingHistoryStatus() {
+    public void checkBillingHistoryStatus() {
         log.info("Позитивный тест.Проверяем  платежный статус");
         BillingHistoryPage billingHistoryPage = new LoginPage(driver)
-
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .openBillingPage()
                 .openBillingHistory();

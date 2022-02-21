@@ -15,6 +15,7 @@ public class ProjTest extends BaseTest {
     public void a_checkProject() {
         log.info("Старт позитивного теста на проверку функционнальности");
         CreateSuiteAndCasePage createSuiteAndCasePage = new LoginPage(driver)
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .createNewProjectButton()
                 .createProject(TestValues.TEST_PROJECT_FIELD_NAME, TestValues.TEST_PROJECT_FIELD_CODE)
@@ -35,6 +36,7 @@ public class ProjTest extends BaseTest {
     public void b_checkSearchField() {
         log.info("Поиск проекта по поисковой строке");
         ProjectsPage projectsPage = new LoginPage(driver)
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .searchProjField(TestValues.TEST_TITLE);
 
@@ -46,6 +48,7 @@ public class ProjTest extends BaseTest {
     public void c_checkIfExistProject() {
         log.info("Положителбный тест на создание  существующего проекта");
         NewProjectPage newProjectPage = new LoginPage(driver)
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .createNewProjectButton()
                 .createProject("Tms", "");
@@ -72,7 +75,7 @@ public class ProjTest extends BaseTest {
 
 
     @Test(priority = 5)
-    public void e_checkProjectFieldsInCreateProj() {
+    public void checkProjectFieldsInCreateProj() {
         log.info("Проверяем проект на минимальное колличество букв");
         NewProjectPage newProjectPage = new LoginPage(driver)
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
@@ -87,7 +90,7 @@ public class ProjTest extends BaseTest {
     }
 
     @Test(priority = 6)
-    public void g_checkProjectFieldsInCreateProj_2() {
+    public void checkProjectFieldsInCreateProj_2() {
         log.info("Проверяем проект на вставление цифр в название проекта");
         NewProjectPage newProjectPage = new LoginPage(driver)
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)

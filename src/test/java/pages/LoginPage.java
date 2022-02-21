@@ -29,15 +29,15 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        driver.get(ConfigProvider.URL);
+       // driver.get(ConfigProvider.URL);
         PageFactory.initElements(this.driver, this);
     }
 
-    /* public LoginPage open() {
+     public LoginPage open() {
          driver.get(ConfigProvider.URL);
-        //  PageFactory.initElements(this.driver, this);
+         PageFactory.initElements(this.driver, this);
          return this;
-     }*/
+     }
     @Step("open project page")
     public ProjectsPage login(String login, String password) {
         loginField.sendKeys(login);
