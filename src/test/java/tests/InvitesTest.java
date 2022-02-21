@@ -12,7 +12,7 @@ public class InvitesTest extends BaseTest {
 
     @Test(priority = 1)
     public void a_invitesNewUser() {
-        log.info("Положительный тест на проверку регистрации нового пользавателя и ограничиваем доступ");
+        log.info("тест на проверку регистрации нового пользавателя и ограничиваем доступ");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
@@ -26,7 +26,7 @@ public class InvitesTest extends BaseTest {
 
     @Test(priority = 2)
     public void searchNewInviteUser() {
-        log.info("Положительный тест на поиск пользователей ");
+        log.info("тест на поиск пользователей ");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
@@ -40,7 +40,7 @@ public class InvitesTest extends BaseTest {
 
     @Test(priority = 3)
     public void checkAddExistsUser() {
-        log.info("Негативный тест на создание существующего пользователя");
+        log.info("тест на создание существующего пользователя");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
@@ -72,7 +72,7 @@ public class InvitesTest extends BaseTest {
 
     @Test(priority = 5)
     public void openWindowWithFieldsForInvitesNewUser() {
-        log.info("Негативный тест проверка полей можно ли зарегестрироваться не заполняя поля email и title");
+        log.info("тест проверка полей можно ли зарегестрироваться не заполняя поля email и title");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
@@ -101,7 +101,7 @@ public class InvitesTest extends BaseTest {
 
     @Test(priority = 7)
     public void openWindowWithFieldsForInvitesNewUserAndCheckEmailUserFields_2() {
-        log.info("Негативный тест на неправильный ввод эл почты");
+        log.info("тест на неправильный ввод эл почты");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
@@ -115,7 +115,7 @@ public class InvitesTest extends BaseTest {
 
     @Test(priority = 8)
     public void openWindowWithFieldsForInvitesNewUserAndCheckTitleUserFields() {
-        log.info("Негативный тест на проверку поля title");
+        log.info("тест на проверку поля title");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
@@ -129,7 +129,7 @@ public class InvitesTest extends BaseTest {
     }
 
     @Test(priority = 9)
-    public void revokeNewInvites() {
+    public void i_revokeNewInvites() {
         log.info("Тест удаляет добавленого пользователя(faker@faker.faker) и проверяет" +
                 " в поисковой строке существует липользователь с таким адрессом ");
         InvitesPage invitesPage = new LoginPage(driver)
