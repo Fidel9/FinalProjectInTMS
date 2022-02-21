@@ -64,6 +64,7 @@ public class ProjTest extends BaseTest {
     public void d_checkDeleteProj() {
         log.info("Удаление существующего проекта");
         ProjectsPage projectsPage = new LoginPage(driver)
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .deleteProjectNameTms()
                 .searchProjField(TestValues.TEST_TITLE);
@@ -78,6 +79,7 @@ public class ProjTest extends BaseTest {
     public void checkProjectFieldsInCreateProj() {
         log.info("Проверяем проект на минимальное колличество букв");
         NewProjectPage newProjectPage = new LoginPage(driver)
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .createNewProjectButton()
                 .createProject("Q", "");
@@ -93,6 +95,7 @@ public class ProjTest extends BaseTest {
     public void checkProjectFieldsInCreateProj_2() {
         log.info("Проверяем проект на вставление цифр в название проекта");
         NewProjectPage newProjectPage = new LoginPage(driver)
+                .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
                 .createNewProjectButton()
                 .createProject("P1234", "");
