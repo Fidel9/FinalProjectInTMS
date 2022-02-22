@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
+import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +31,8 @@ abstract public class BaseTest {
     RepositoryPage repositoryPage;
     WorkspacePage workspacePage;
 
+    String emailAdmin, passwordAdmin;
+
     @BeforeMethod(description = "Setup and start browser")
     public void setUp(ITestContext context) {
         log.info("<----- начало теста ----->");
@@ -39,6 +43,16 @@ abstract public class BaseTest {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         // BasePage.setDriver(driver);
         context.setAttribute("driver", driver);
+
+
+        Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("url"));
+        emailAdmin = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("users.demo.login"));
+        passwordAdmin = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("users.demo.password"));
+        Configuration.browser = "chrome";
+        Configuration.clickViaJs =true;
+        Configuration.savePageSource = false;
+        Configuration.timeout = 10000;
+
 
         loginPage = new LoginPage(driver);
         signUpPage = new SignUpPage(driver);

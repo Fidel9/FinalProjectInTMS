@@ -15,7 +15,7 @@ public class BillingTest extends BaseTest {
         log.info("Позитивный тест. Поиск счета и проверяе сумму на счете");
         BillingPage checkSubscriptionsPlan = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .openBillingPage();
 
         Assert.assertEquals(checkSubscriptionsPlan.getNextCharge(), "$0");
@@ -27,7 +27,7 @@ public class BillingTest extends BaseTest {
         log.info("Позитивный тест. Проверяем что подписка бесплатная");
         BillingPage checkSubscriptionsPlan = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .openBillingPage();
 
         Assert.assertEquals(checkSubscriptionsPlan.getCurrentSubscriptionPlan(), "Free");
@@ -40,7 +40,7 @@ public class BillingTest extends BaseTest {
         log.info("Позитивный тест. На поиск карты оплаты");
         PaymentPage paymentPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .openBillingPage()
                 .openPaymentMethods()
                 .openPaymentWindow();
@@ -55,7 +55,7 @@ public class BillingTest extends BaseTest {
         log.info("Позитивный тест.Проверяем платежную историю");
         BillingHistoryPage billingHistoryPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .openBillingPage()
                 .openBillingHistory();
 
@@ -68,7 +68,7 @@ public class BillingTest extends BaseTest {
         log.info("Позитивный тест.Проверяем  платежный статус");
         BillingHistoryPage billingHistoryPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .openBillingPage()
                 .openBillingHistory();
 

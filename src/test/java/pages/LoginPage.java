@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import readProperties.ConfigProvider;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
+
 public class LoginPage extends BasePage {
 
     @FindBy(css = "#inputEmail")
@@ -34,7 +36,7 @@ public class LoginPage extends BasePage {
     }
 
      public LoginPage open() {
-         driver.get(ConfigProvider.URL);
+         driver.get(baseUrl);
          PageFactory.initElements(this.driver, this);
          return this;
      }

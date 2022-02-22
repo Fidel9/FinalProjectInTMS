@@ -4,36 +4,12 @@
     <test name="test 1">
 
         <classes>
-            <class name="tests.LoginTest"/>
-
-        </classes>
-    </test> <!-- Test InvitesTest -->
-
-    <test name="test 2">
-
-        <classes>
-            <class name="tests.SignUpTest"/>
-        </classes>
-    </test> <!-- Test InvitesTest -->
-
-    <test name="test 3">
-
-        <classes>
             <class name="tests.BillingTest"/>
+
         </classes>
     </test> <!-- Test InvitesTest -->
 
-    <test name="test 4">
 
-        <classes>
-            <class name="tests.InvitesTest"/>
-        </classes>
-    </test> <!-- Test InvitesTest -->
 
-    <test name="test 5">
 
-        <classes>
-            <class name="tests.ProjTest"/>
-        </classes>
-    </test> <!-- Test InvitesTest -->
 </suite>
