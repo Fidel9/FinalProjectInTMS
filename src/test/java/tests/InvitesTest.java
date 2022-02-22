@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.InvitesPage;
 import pages.LoginPage;
-import readProperties.ConfigProvider;
 
 @Log4j2
 public class InvitesTest extends BaseTest {
@@ -15,7 +14,7 @@ public class InvitesTest extends BaseTest {
         log.info("тест на проверку регистрации нового пользавателя и ограничиваем доступ");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .inviteNewUserFields("faker@faker.faker", "QA engineer");
@@ -29,7 +28,7 @@ public class InvitesTest extends BaseTest {
         log.info("тест на поиск пользователей ");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .searchForInvite("faker@faker.faker");
