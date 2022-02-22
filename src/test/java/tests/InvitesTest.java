@@ -43,7 +43,7 @@ public class InvitesTest extends BaseTest {
         log.info("тест на создание существующего пользователя");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .inviteNewUserFields("faker@faker.faker", "QA engineer");
@@ -59,7 +59,7 @@ public class InvitesTest extends BaseTest {
         log.info("Поиск не существующего пользователя в поисковой строке");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .searchForInvite("Ivan");
@@ -75,7 +75,7 @@ public class InvitesTest extends BaseTest {
         log.info("тест проверка полей можно ли зарегестрироваться не заполняя поля email и title");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .inviteNewUserFields("", "");
@@ -89,7 +89,7 @@ public class InvitesTest extends BaseTest {
         log.info("Негативный тест проверка поля ввода эл почты (email)");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .inviteNewUserFields("", "QA engineer");
@@ -104,7 +104,7 @@ public class InvitesTest extends BaseTest {
         log.info("тест на неправильный ввод эл почты");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .inviteNewUserFields("faker@@gmail.com", "QA engineer");
@@ -118,7 +118,7 @@ public class InvitesTest extends BaseTest {
         log.info("тест на проверку поля title");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .inviteNewUserFields("faker@gmail.com", "");
@@ -134,7 +134,7 @@ public class InvitesTest extends BaseTest {
                 " в поисковой строке существует липользователь с таким адрессом ");
         InvitesPage invitesPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .workspacePage()
                 .openInvitesPage()
                 .revokeNewInvites()

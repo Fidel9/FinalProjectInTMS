@@ -16,7 +16,7 @@ public class ProjTest extends BaseTest {
         log.info("Старт  теста на проверку создания проекта и тест кейса");
         CreateSuiteAndCasePage createSuiteAndCasePage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .createNewProjectButton()
                 .createProject(TestValues.TEST_PROJECT_FIELD_NAME, TestValues.TEST_PROJECT_FIELD_CODE)
                 .createNewProjectSaveButton()
@@ -37,7 +37,7 @@ public class ProjTest extends BaseTest {
         log.info("Поиск проекта по поисковой строке");
         ProjectsPage projectsPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .searchProjField(TestValues.TEST_TITLE);
 
         Assert.assertEquals(projectsPage.getTitleProjects(), "Tms");
@@ -49,7 +49,7 @@ public class ProjTest extends BaseTest {
         log.info("тест на создание  существующего проекта");
         NewProjectPage newProjectPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .createNewProjectButton()
                 .createProject("Tms", "");
 
@@ -65,7 +65,7 @@ public class ProjTest extends BaseTest {
         log.info("Удаление существующего проекта");
         ProjectsPage projectsPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .deleteProjectNameTms()
                 .searchProjField(TestValues.TEST_TITLE);
 
@@ -80,7 +80,7 @@ public class ProjTest extends BaseTest {
         log.info("Проверяем проект на минимальное колличество букв");
         NewProjectPage newProjectPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .createNewProjectButton()
                 .createProject("Q", "");
 
@@ -96,7 +96,7 @@ public class ProjTest extends BaseTest {
         log.info("Проверяем проект на вставление цифр в название проекта");
         NewProjectPage newProjectPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .createNewProjectButton()
                 .createProject("P1234", "");
 

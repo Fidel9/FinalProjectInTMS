@@ -16,7 +16,7 @@ public class RunTest extends BaseTest {
         log.info("Старт  теста на проверку test run");
         TestRunPage testRunPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                 .createNewProjectButton()
                 .createProject(TestValues.TEST_PROJECT_FIELD_NAME_2, TestValues.TEST_PROJECT_FIELD_CODE_2)
                 .createNewProjectSaveButton()
@@ -33,7 +33,7 @@ public class RunTest extends BaseTest {
         log.info("Старт  теста на проверку test run");
         RepositoryPage repositoryPage = new LoginPage(driver)
                 .open()
-                .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)
+                .login(emailAdmin,passwordAdmin)
                         .openPageRepositoryWithoutCreateNewProject()
                                 .checkErrorFlashMessage();
 
