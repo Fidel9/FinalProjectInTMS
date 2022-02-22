@@ -38,9 +38,9 @@ public class CreateSuiteAndCasePage extends BasePage {
     }
 
     @Step("open create new case in suite and case page")
-    public CaseBuildPage createNewCase() {
+    public CreateTestCasePage createNewCase() {
         caseBuildProjectPage.click();
-        return new CaseBuildPage(driver);
+        return new CreateTestCasePage(driver);
     }
 }
 

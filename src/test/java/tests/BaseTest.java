@@ -19,7 +19,7 @@ abstract public class BaseTest {
     SignUpPage signUpPage;
     BillingHistoryPage billingHistoryPage;
     BillingPage billingPage;
-    CaseBuildPage caseBuildPage;
+    CreateTestCasePage createTestCasePage;
     CreateSuiteAndCasePage createSuiteAndCasePage;
     InvitesPage invitesPage;
     LastRepoPage lastRepoPage;
@@ -44,7 +44,7 @@ abstract public class BaseTest {
         signUpPage = new SignUpPage(driver);
         billingHistoryPage = new BillingHistoryPage(driver);
         billingPage = new BillingPage(driver);
-        caseBuildPage = new CaseBuildPage(driver);
+        createTestCasePage = new CreateTestCasePage(driver);
         createSuiteAndCasePage = new CreateSuiteAndCasePage(driver);
         invitesPage = new InvitesPage(driver);
         lastRepoPage = new LastRepoPage(driver);

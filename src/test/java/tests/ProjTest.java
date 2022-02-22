@@ -13,7 +13,7 @@ public class ProjTest extends BaseTest {
 
     @Test(priority = 1)
     public void a_createProjectAndCase() {
-        log.info("Старт позитивного теста на проверку функционнальности");
+        log.info("Старт  теста на проверку создания проекта и тест кейса");
         CreateSuiteAndCasePage createSuiteAndCasePage = new LoginPage(driver)
                 .open()
                 .login(ConfigProvider.ADMIN_LOGIN, ConfigProvider.ADMIN_PASSWORD)

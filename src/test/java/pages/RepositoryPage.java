@@ -15,6 +15,19 @@ public class RepositoryPage extends BasePage {
     @FindBy(xpath = "//table[@class='style_table-1jtb1']")
     private WebElement searchFieldTitleInRepo;
 
+
+    @FindBy(xpath = "//label[@class='style_checkbox-tLOSg style_checkbox-1ztec style_inHeader-18FWp']/div")
+    private WebElement input;
+
+    @FindBy(xpath = "//button[contains(text(),'Run')]")
+    private WebElement buttonRunTest;
+
+    @FindBy(xpath = "//div[@class='flash-message']")
+    private WebElement messageLimitOfActiveRun;
+
+    @FindBy(xpath = "//div[@class='modal-footer mt-1']//button[contains(text(),'Start test run')]")
+    private WebElement startExpressRunButton;
+
     public RepositoryPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -25,11 +38,29 @@ public class RepositoryPage extends BasePage {
         return searchFieldTitleInRepo.getText();
     }//на данный момент не используется
 
+    @Step("")
+    public String getMessageYouHaveReachedALimitOfActiveRun() {
+        return  messageLimitOfActiveRun.getText();
+    }
+
     @Step("open last repo page")
     public LastRepoPage lastPageInRepo() {
         testCasesWithoutSuite.click();
         return new LastRepoPage(driver);
     }
 
+    @Step("open test run")
+    public TestRunPage openTestRun(){
+        input.click();
+        buttonRunTest.click();
+        startExpressRunButton.click();
+        return new TestRunPage(driver);
+    }
+     public RepositoryPage checkErrorFlashMessage(){
+         input.click();
+         buttonRunTest.click();
+         startExpressRunButton.click();
+        return this;
+     }
 }
 

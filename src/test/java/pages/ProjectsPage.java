@@ -43,6 +43,10 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//span[starts-with(text(),'Looks like')]")
     private WebElement youDonNotHaveAnyProjects;
 
+
+    @FindBy(xpath = "//a[starts-with(text(),'TestProject')]")
+    private WebElement pageRepositoryWithoutCreateNewProject;
+
     public ProjectsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -89,6 +93,12 @@ public class ProjectsPage extends BasePage {
         selectDeleteInDropdownProj.click();
         deleteProjectButton.click();
         return this;
+    }
+
+    @Step("open repository page with click exist project")
+    public RepositoryPage openPageRepositoryWithoutCreateNewProject(){
+        pageRepositoryWithoutCreateNewProject.click();
+        return new RepositoryPage(driver);
     }
 
 }
