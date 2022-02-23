@@ -9,7 +9,7 @@ import pages.*;
 public class RunTest extends BaseTest {
 
     @Test
-    public void openTestRun() {
+    public void a_openTestRun() {
         log.info("Старт  теста на проверку test run");
         TestRunPage testRunPage = new LoginPage(driver)
                 .open()
@@ -27,7 +27,7 @@ public class RunTest extends BaseTest {
     }
 
     @Test
-    public void errorMessageTestRun() {
+    public void b_errorMessageTestRun() {
         log.info("Старт  теста на проверку test run");
         RepositoryPage repositoryPage = new LoginPage(driver)
                 .open()

@@ -36,4 +36,11 @@
             <class name="tests.ProjTest"/>
         </classes>
     </test> <!-- Test InvitesTest -->
+
+    <test name="test 6">
+
+        <classes>
+            <class name="tests.RunTest"/>
+        </classes>
+    </test> <!-- Test InvitesTest -->
 </suite>
