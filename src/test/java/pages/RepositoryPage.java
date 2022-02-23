@@ -22,7 +22,7 @@ public class RepositoryPage extends BasePage {
     @FindBy(xpath = "//button[contains(text(),'Run')]")
     private WebElement buttonRunTest;
 
-    @FindBy(xpath = "//div[@class='flash-message']")
+    @FindBy(xpath = "//div[@class='flash-message']//div[@class='alert alert-error alert-dismissible show']")
     private WebElement messageLimitOfActiveRun;
 
     @FindBy(xpath = "//div[@class='modal-footer mt-1']//button[contains(text(),'Start test run')]")
@@ -38,7 +38,7 @@ public class RepositoryPage extends BasePage {
         return searchFieldTitleInRepo.getText();
     }//на данный момент не используется
 
-    @Step("")
+    @Step("message you have reached a limited of active run")
     public String getMessageYouHaveReachedALimitOfActiveRun() {
         return  messageLimitOfActiveRun.getText();
     }
@@ -56,6 +56,8 @@ public class RepositoryPage extends BasePage {
         startExpressRunButton.click();
         return new TestRunPage(driver);
     }
+
+     @Step("check if you have reached a limit of active run in test run")
      public RepositoryPage checkErrorFlashMessage(){
          input.click();
          buttonRunTest.click();

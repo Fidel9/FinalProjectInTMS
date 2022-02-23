@@ -36,6 +36,12 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//a[@href='/project/TMS/delete']")
     private WebElement selectDeleteInDropdownProj;
 
+    @FindBy(xpath = "//a[@href='/project/TESTPROJEC/delete']")
+    private WebElement selectDeleteForTestRun;
+
+    @FindBy(xpath = "//a[starts-with(text(),'TestProject')]//following::td[@class='text-end']")
+    private WebElement dropdownDeleteProjectForTestRun;
+
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement deleteProjectButton;
 
@@ -68,7 +74,7 @@ public class ProjectsPage extends BasePage {
         return youDonNotHaveAnyProjects.getText();
     }
 
-    @Step("")
+    @Step("button create new project ")
     public NewProjectPage createNewProjectButton() {
         createNewProjectButton.click();
         return new NewProjectPage(driver);
@@ -91,6 +97,14 @@ public class ProjectsPage extends BasePage {
     public ProjectsPage deleteProjectNameTms() {
         dropdownDeleteProjectProj.click();
         selectDeleteInDropdownProj.click();
+        deleteProjectButton.click();
+        return this;
+    }
+
+    @Step("delete project in project page")
+    public ProjectsPage deleteProjectFromTestRun() {
+        dropdownDeleteProjectForTestRun.click();
+        selectDeleteForTestRun.click();
         deleteProjectButton.click();
         return this;
     }

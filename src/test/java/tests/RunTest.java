@@ -3,11 +3,8 @@ package tests;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CreateSuiteAndCasePage;
-import pages.LoginPage;
-import pages.RepositoryPage;
-import pages.TestRunPage;
-import readProperties.ConfigProvider;
+import pages.*;
+
 @Log4j2
 public class RunTest extends BaseTest {
 
@@ -25,7 +22,8 @@ public class RunTest extends BaseTest {
                 .repository()
                 .openTestRun();
 
-        Assert.assertEquals(testRunPage.getTitleTestRun(),"Test was created succesfuly");
+        Assert.assertEquals(testRunPage.getTitleTestRun(),TestValues.TEST_RUN_TITLE);
+        log.info(testRunPage.getTitleTestRun());
     }
 
     @Test
@@ -37,8 +35,20 @@ public class RunTest extends BaseTest {
                         .openPageRepositoryWithoutCreateNewProject()
                                 .checkErrorFlashMessage();
 
-        Assert.assertEquals(repositoryPage.getMessageYouHaveReachedALimitOfActiveRun(),"\n" +
-                "You have reached a limit of active runs. Complete/Abort your active test runs or upgrade to a paid plan.");
+        Assert.assertEquals(repositoryPage.getMessageYouHaveReachedALimitOfActiveRun(),TestValues.TEST_RUN_ERROR_MESSAGE);
+        log.info(repositoryPage.getMessageYouHaveReachedALimitOfActiveRun());
+    }
+    @Test
+    public void deleteProjectFromTestRun() {
+        log.info("Удаление существующего проекта");
+        ProjectsPage projectsPage = new LoginPage(driver)
+                .open()
+                .login(emailAdmin,passwordAdmin)
+                .deleteProjectFromTestRun()
+                .searchProjField(TestValues.TEST_TITLE_2);
 
+        Assert.assertEquals(projectsPage.getYouDonNotHaveAnyProjectsYet(), "Looks like you don’t have any projects yet.");
+        log.info(projectsPage.getYouDonNotHaveAnyProjectsYet());
+        log.info("Проект удален");
     }
 }

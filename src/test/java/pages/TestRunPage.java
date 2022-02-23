@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TestRunPage extends BasePage{
 
-    @FindBy(xpath = "//div[@class='flash-message']")
+    @FindBy(xpath = "//div[@class='run-case-row-div run-case-row-title']//a")
     private WebElement titleTestRun;
 
 

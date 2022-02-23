@@ -43,22 +43,9 @@ public class SuiteTest {
     }
 
     @Test
-    public void positiveApiTest(){
-        Suites suite =  Suites.builder()
-                .code("Home")
-                .title("Home")
-                .build();
-        ResponseStatus actual = new SuiteAdapter().post(suite,200);
-        ResponseStatus expected = ResponseStatus.builder()
-                .status(true)
-                .build();
-
-        assertEquals(actual, expected);
-    }
-    @Test
     public void deleteProjectTest() {
         Project project = Project.builder()
-                .code("Ho")
+                .code("Home")
                 .build();
         Delete actual = new ProjectAdapter().delete(project, 200);
         Delete expected = Delete.builder()
