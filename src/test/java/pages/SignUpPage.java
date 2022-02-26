@@ -1,6 +1,8 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -30,26 +32,32 @@ public class SignUpPage extends BasePage {
     @FindBy(xpath = "//span[text()='The agreement field is required.']")
     private WebElement errorCheckBox;
 
-    public SignUpPage() {
-        PageFactory.initElements(driver,this);
+    public SignUpPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(this.driver, this);
     }
 
-
-    public SignUpPage demoSignUpPage(String demoEm,String demoPas,String demoPas2) {
+    @Step("open signUP page and check input email and password")
+    public SignUpPage openSignUpPageAndInputEmailAndPassword(String demoEm, String demoPas, String demoPas2) {
         signUpEmail.sendKeys(demoEm, Keys.ENTER);
-        signUpPassword.sendKeys(demoPas,Keys.ENTER);
-        signUpPassword2.sendKeys(demoPas2,Keys.ENTER);
+        signUpPassword.sendKeys(demoPas, Keys.ENTER);
+        signUpPassword2.sendKeys(demoPas2, Keys.ENTER);
         checkBox.isSelected();
         return this;
     }
 
-    public String getErrorSignUpEmail(){
+    @Step("error email signUp")
+    public String getErrorSignUpEmail() {
         return errorSignUpEmail.getAttribute("innerText");
     }
-    public String getErrorSignUpPass(){
+
+    @Step("error password signUp")
+    public String getErrorSignUpPass() {
         return errorSignUpPass.getText();
     }
-    public String getCheckBox(){
+
+    @Step("error checkBox signUp")
+    public String getErrorCheckBox() {
         return errorCheckBox.getText();
     }
 }

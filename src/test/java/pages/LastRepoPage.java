@@ -1,5 +1,7 @@
 package pages;
 
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,18 +20,26 @@ public class LastRepoPage extends BasePage {
     public WebElement deleteCaseInRepo2;
 
 
-    public LastRepoPage() {
-        PageFactory.initElements(driver,this);}
+    public LastRepoPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(this.driver, this);
+    }
 
-    public String getCaseWasCreatedSuccessfully(){return successFullTestCase.getText();}
+    @Step("case was created successfully")
+    public String getCaseWasCreatedSuccessfully() {
+        return successFullTestCase.getText();
+    }
 
-    public String getProjectWasCreatedSuccessfully(){return createdSuccessfullyProject.getText();}
+    @Step("project was created successfully")
+    public String getProjectWasCreatedSuccessfully() {
+        return createdSuccessfullyProject.getText();
+    }
 
 
-
-    public CreateSuiteAndCasePage deleteCase(){
+    @Step("open create suite and case page")
+    public CreateSuiteAndCasePage deleteCase() {
         deleteCaseInRepo.click();
         deleteCaseInRepo2.click();
-        return new CreateSuiteAndCasePage();
+        return new CreateSuiteAndCasePage(driver);
     }
 }

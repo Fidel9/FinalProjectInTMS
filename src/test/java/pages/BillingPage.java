@@ -1,10 +1,14 @@
 package pages;
 
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 public class BillingPage extends BasePage {
+
 
     @FindBy(xpath = "//div[@class='sub-menu-container']//i[@class='far fa-fw fa-credit-card']")
     private WebElement paymentMethods;
@@ -19,23 +23,32 @@ public class BillingPage extends BasePage {
     private WebElement nextСharge;
 
 
-    public BillingPage() {
+    public BillingPage(WebDriver driver) {
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public String getCurrentSubscriptionPlan() {return currentSubscriptionPlan.getText();}
-
-
-    public String getNextCharge() {return nextСharge.getText();}
-
-    public PaymentPage openPaymentMethods() {
-        paymentMethods.click();
-        return new PaymentPage();
+    @Step("Проверяем текущуюю подписку (check current subscription plan in billing page) ")
+    public String getCurrentSubscriptionPlan() {
+        return currentSubscriptionPlan.getText();
     }
 
+    @Step("Проверяем текущий счет(check charge in billing page)")
+    public String getNextCharge() {
+        return nextСharge.getText();
+    }
+
+    @Step("Открываем страницу способы оплаты(open payment page)")
+    public PaymentPage openPaymentMethods() {
+        paymentMethods.click();
+        return new PaymentPage(driver);
+    }
+
+    @Step("Открываем страницу история платежа(open page history)")
     public BillingHistoryPage openBillingHistory() {
         billing.click();
-        return new BillingHistoryPage();
+        return new BillingHistoryPage(driver);
     }
 
 }
+

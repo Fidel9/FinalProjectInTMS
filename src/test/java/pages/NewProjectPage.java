@@ -1,6 +1,7 @@
 package pages;
 
-import org.openqa.selenium.Keys;
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -25,18 +26,22 @@ public class NewProjectPage extends BasePage {
     @FindBy(xpath = "//div[@class='flash-message']")
     private WebElement projectExist;
 
-    public NewProjectPage() {
-        PageFactory.initElements(driver, this);
+    public NewProjectPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(this.driver, this);
     }
 
+    @Step("error code")
     public String getErrorCode() {
         return errorCode.getText();
     }
 
+    @Step("project with The same Code already exists")
     public String getProjectWithTheSameCodeAlreadyExists() {
         return projectExist.getText();
     }
 
+    @Step("open new project page and create project")
     public NewProjectPage createProject(String createProjectNameE,
                                         String createProjectCodeE) {
         createProjectName.sendKeys(createProjectNameE);
@@ -44,12 +49,11 @@ public class NewProjectPage extends BasePage {
         return this;
     }
 
+    @Step("open create suite and case page")
     public CreateSuiteAndCasePage createNewProjectSaveButton() {
         createProjectSaveButton.click();
-        return new CreateSuiteAndCasePage();
+        return new CreateSuiteAndCasePage(driver);
     }
-
-
 }
 
 

@@ -1,11 +1,13 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class InvitesPage extends BasePage{
+public class InvitesPage extends BasePage {
 
     @FindBy(xpath = "//a[@class='btn btn-primary me-2']")
     private WebElement inviteNewMemberButton;
@@ -27,7 +29,6 @@ public class InvitesPage extends BasePage{
 
     @FindBy(xpath = "//input[@class='form-control search-input']")
     private WebElement searchFieldsForInvitesInInvitesPage;
-
 
 
     @FindBy(xpath = "//div[@class='flash-message']//div[@role='alert']")
@@ -52,7 +53,6 @@ public class InvitesPage extends BasePage{
     private WebElement theUserAlreadyExists;
 
 
-
     @FindBy(xpath = "//span[contains(text(),'faker@faker.faker')]//following::a[@class='btn btn-dropdown']")
     private WebElement dropdownRevokeNewUser;
 
@@ -63,11 +63,13 @@ public class InvitesPage extends BasePage{
     private WebElement buttonRevoke;
 
 
-    public InvitesPage() {
-        PageFactory.initElements(driver,this);
+    public InvitesPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(this.driver, this);
     }
 
-    public InvitesPage inviteNewUserFields(String emailInviteMember,String titleInviteMember){
+    @Step("invites new user fields in invites page")
+    public InvitesPage inviteNewUserFields(String emailInviteMember, String titleInviteMember) {
         inviteNewMemberButton.click();
         inviteMemberEmailFields.sendKeys(emailInviteMember);
         inviteNewMemberTitle.sendKeys(titleInviteMember);
@@ -76,29 +78,56 @@ public class InvitesPage extends BasePage{
         buttonInviteNewUser.click();
         return this;
     }
-    public InvitesPage searchForInvite(String strInviteSearch){
+
+    @Step("search for invite user in invite page")
+    public InvitesPage searchForInvite(String strInviteSearch) {
         searchFieldsForInvitesInInvitesPage.sendKeys(strInviteSearch);
         searchFieldsForInvitesInInvitesPage.sendKeys(Keys.ENTER);
         return this;
     }
-    public InvitesPage revokeNewInvites(){
+
+    @Step("revoke new invites user in invite page")
+    public InvitesPage revokeNewInvites() {
         dropdownRevokeNewUser.click();
         selectRevoke.click();
         buttonRevoke.click();
         return this;
     }
 
-    public String getErrorInvitesNewMember(){
+    @Step("invite new member  validations error message in invites page")
+    public String getErrorInvitesNewMember() {
         return validationsErrorMessageInviteNewMember.getText();
     }
-    public String getErrorEmailInvites(){return errorEmailInvites.getText();}
-    public String getErrorTitleMember(){return errorTitleInvites.getText();}
-    public String getErrorSearchForInvites(){
+
+    @Step("email invites in invites page")
+    public String getErrorEmailInvites() {
+        return errorEmailInvites.getText();
+    }
+
+    @Step("member title in invites page")
+    public String getErrorTitleMember() {
+        return errorTitleInvites.getText();
+    }
+
+    @Step("search for invites in invites page")
+    public String getErrorSearchForInvites() {
         return errorSearchForInvites.getAttribute("innerText");
     }
-    public String getSuccessInvites(){return successInvitesNewUser.getText();}
-    public String getUserEmailFoundInInvitesPage(){return userEmailFoundInInvitesPage.getAttribute("innerText");}
-    public String getTheUserAlreadyExist(){return theUserAlreadyExists.getText();}
+
+    @Step("success invites new member in invites page")
+    public String getSuccessInvites() {
+        return successInvitesNewUser.getText();
+    }
+
+    @Step("found user email in invites page ")
+    public String getUserEmailFoundInInvitesPage() {
+        return userEmailFoundInInvitesPage.getAttribute("innerText");
+    }
+
+    @Step("user already exist in invites page")
+    public String getTheUserAlreadyExist() {
+        return theUserAlreadyExists.getText();
+    }
 
 
 }
