@@ -121,7 +121,7 @@ public class InvitesPage extends BasePage {
 
     @Step("found user email in invites page ")
     public String getUserEmailFoundInInvitesPage() {
-        return userEmailFoundInInvitesPage.getAttribute("innerText");
+        return userEmailFoundInInvitesPage.getText();
     }
 
     @Step("user already exist in invites page")
