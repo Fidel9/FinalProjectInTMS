@@ -13,7 +13,7 @@ public class ApiTest {
 
     @Test
     public void getProjectTest() {
-        ResponseStatus response = new ProjectAdapter().getProject(404, "Home");
+        ResponseStatus response = new ProjectAdapter().getProject(200, "Home");
         System.out.println(response);
     }
 
