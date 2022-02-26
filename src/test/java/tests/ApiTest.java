@@ -13,7 +13,7 @@ public class ApiTest {
 
     @Test
     public void getProjectTest() {
-        ResponseStatus response = new ProjectAdapter().getProject(200, "Home");
+        ResponseStatus response = new ProjectAdapter().getProject(404, "Home");
         System.out.println(response);
     }
 
@@ -23,7 +23,7 @@ public class ApiTest {
                 .code("Home")
                 .title("Home")
                 .build();
-        ResponseStatus actual = new ProjectAdapter().post(project, 200);
+        ResponseStatus actual = new ProjectAdapter().post(project, 422);
         ResponseStatus expected = ResponseStatus.builder()
                 .status(false)
                 .errorMessage("Data is invalid.")
