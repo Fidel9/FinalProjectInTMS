@@ -8,9 +8,7 @@ import lombok.Data;
 @Builder
 public class ResponseStatus {
     boolean status;
-    String result;
-    int id;
     String errorMessage;
-    ErrorFields errorFields;
+    //ErrorFields errorFields;
 
 }

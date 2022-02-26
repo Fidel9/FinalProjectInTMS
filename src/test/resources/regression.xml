@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="5" name="Test Suite" parallel="tests">
+<suite thread-count="7" name="Test Suite" parallel="tests">
     <test name="test 1">
 
         <classes>
@@ -41,6 +41,13 @@
 
         <classes>
             <class name="tests.RunTest"/>
+        </classes>
+    </test> <!-- Test InvitesTest -->
+
+    <test name="test 7">
+
+        <classes>
+            <class name="tests.ApiTest"/>
         </classes>
     </test> <!-- Test InvitesTest -->
 </suite>

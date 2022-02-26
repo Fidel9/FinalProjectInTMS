@@ -1,7 +1,6 @@
 package apiAdapters;
 
 import apiModels.Project;
-import apiResponse.Delete;
 import apiResponse.ResponseStatus;
 
 
@@ -16,11 +15,6 @@ public class ProjectAdapter extends BaseAdapter {
         return gson.fromJson(super.get(statusCode, "project/" + codeProject), ResponseStatus.class);
     }
 
-
-    public Delete delete(Project project, int statusCode) {
-        String response = delete(gson.toJson(project, Project.class), statusCode, "project");
-        return gson.fromJson(response, Delete.class);
-    }
 
 }
 
