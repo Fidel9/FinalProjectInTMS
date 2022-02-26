@@ -46,7 +46,7 @@ public class InvitesPage extends BasePage {
     @FindBy(xpath = "//span[@class='alert-message']")
     private WebElement successInvitesNewUser;
 
-    @FindBy(xpath = "//span[@class='team-member-role']")
+    @FindBy(xpath = "//span[contains(text(),'faker@faker.faker')]")
     private WebElement userEmailFoundInInvitesPage;
 
     @FindBy(xpath = "//div[@class='form-control-feedback']")//возможна ошибка из за скрытого текста
