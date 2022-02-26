@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TestRunPage extends BasePage{
 
-    @FindBy(xpath = "//div[@class='run-case-row-div run-case-row-title']//a")
+    @FindBy(xpath = "//div[@class='run-case-row-div run-case-row-title']//a[starts-with(text(),'Test_Authorization')]")
     private WebElement titleTestRun;
 
 
