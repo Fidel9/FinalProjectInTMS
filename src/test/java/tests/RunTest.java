@@ -39,7 +39,7 @@ public class RunTest extends BaseTest {
         Assert.assertEquals(repositoryPage.getMessageYouHaveReachedALimitOfActiveRun(),TestValues.TEST_RUN_ERROR_MESSAGE);
         log.info(repositoryPage.getMessageYouHaveReachedALimitOfActiveRun());
     }
-    @Test
+   /* @Test
     public void c_removeCaseTestRun() {
         log.info("delete test run case");
         TestRunPage testRunPage = new LoginPage(driver)
@@ -49,9 +49,9 @@ public class RunTest extends BaseTest {
                 .RemoveCaseTestRunInPageExpressRun();
 
         log.info("Test run case deleted");
-    }
+    }*/
     @Test
-    public void d_deleteTestRun() {
+    public void c_deleteTestRun() {
         log.info("delete test run");
         ProjectsPage projectsPage = new LoginPage(driver)
                 .open()
@@ -61,7 +61,7 @@ public class RunTest extends BaseTest {
         log.info("Test run deleted");
     }
     @Test
-    public void e_deleteProjectFromTestRun() {
+    public void deleteProjectFromTestRun() {
         log.info("Удаление существующего проекта");
         ProjectsPage projectsPage = new LoginPage(driver)
                 .open()
