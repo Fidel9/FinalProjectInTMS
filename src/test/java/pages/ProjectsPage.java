@@ -70,6 +70,9 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement buttonDeleteTesRun;
 
+    @FindBy(xpath = "//a[@href='/run/TESTPROJEC/dashboard/1']")
+    private WebElement clickButtonTestRunCase;
+
     public ProjectsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -140,5 +143,12 @@ public class ProjectsPage extends BasePage {
         selectDeleteInDropdownTestProjec.click();
         buttonDeleteTesRun.click();
         return this;
+    }
+    @Step("delete test run")
+    public TestRunPage openTestRunPage() {
+        clickProject.click();
+        clickButtonTestRun.click();
+        clickButtonTestRunCase.click();
+        return new TestRunPage(driver);
     }
 }

@@ -18,6 +18,15 @@ public class TestRunPage extends BasePage{
     private WebElement titleTestRun;
 
 
+    @FindBy(xpath = "//a[contains(text(),'Test_Authorization')]//following::div[@class='run-case-row-div text-end run-case-row-controls']")
+    private WebElement clickTestRunCaseDropdown;
+
+    @FindBy(xpath = "//div[@class='dropdown-item']//a[@class='text-danger']")
+    private WebElement selectRemoveCaseInDropdown;
+
+    @FindBy(xpath = "//button[@class='btn btn-danger btn-very-wide']")
+    private WebElement removeCase;
+
     public TestRunPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -34,6 +43,12 @@ public class TestRunPage extends BasePage{
       return   titleTestRun.getText();
     }
 
-
+    @Step("delete test run")
+    public TestRunPage RemoveCaseTestRunInPageExpressRun() {
+       clickTestRunCaseDropdown.click();
+       selectRemoveCaseInDropdown.click();
+       removeCase.click();
+        return this;
+    }
 
 }
