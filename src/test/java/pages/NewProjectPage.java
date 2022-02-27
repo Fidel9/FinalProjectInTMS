@@ -14,13 +14,11 @@ public class NewProjectPage extends BasePage {
     @FindBy(xpath = "//input[@name='code']")
     private WebElement createProjectCode;
 
-    @FindBy(xpath = "")
-    private WebElement createProjectDescription;
 
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement createProjectSaveButton;
 
-    @FindBy(xpath = "//div[text()='The code must be at least 2 characters.']")
+    @FindBy(xpath = "//div[contains(text(),'The code must be at least 2 characters.')]")
     private WebElement errorCode;
 
     @FindBy(xpath = "//div[@class='flash-message']")

@@ -20,9 +20,10 @@ public class RunTest extends BaseTest {
                 .createNewCase()
                 .createCaseRepo(TestValues.TEST_PR_REPO_AUTH_2)
                 .repository()
-                .openTestRun();
+                .openTestRun()
+                .clickTestRunTest_Authorization();
 
-        Assert.assertEquals(testRunPage.getTitleTestRun(),TestValues.TEST_RUN_TITLE);
+        Assert.assertEquals(testRunPage.getTitleTestRun(),"Test_Authorization");
         log.info(testRunPage.getTitleTestRun());
     }
 

@@ -52,7 +52,7 @@ public class CreateTestCasePage extends BasePage {
         dropdownStatusList.click();
         dropdownStatusValue.click();
 
-        dropdownSeverityList.click();  //на данный момент не используются
+        dropdownSeverityList.click();
         dropdownSeverityValue.click();
 
         dropdownPriorityList.click();
