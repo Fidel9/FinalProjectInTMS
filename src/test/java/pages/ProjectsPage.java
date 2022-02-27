@@ -53,6 +53,23 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//a[starts-with(text(),'TestProject')]")
     private WebElement pageRepositoryWithoutCreateNewProject;
 
+
+
+    @FindBy(xpath = "//a[@href='/project/TESTPROJEC']")
+    private WebElement clickProject;
+
+    @FindBy(xpath = "//span[starts-with(text(),'Test Runs')]")
+    private WebElement clickButtonTestRun;
+
+    @FindBy(xpath = "//a[@href='/run/TESTPROJEC/dashboard/1']//following::td[@class='text-end']//a")
+    private WebElement clickButtonTestRunDropdown;
+
+    @FindBy(xpath = "//a[@href='/run/TESTPROJEC/delete/1']")
+    private WebElement selectDeleteInDropdownTestProjec;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    private WebElement buttonDeleteTesRun;
+
     public ProjectsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -115,4 +132,13 @@ public class ProjectsPage extends BasePage {
         return new RepositoryPage(driver);
     }
 
+    @Step("delete test run")
+    public ProjectsPage deleteTestRunInPageExpressRun() {
+        clickProject.click();
+        clickButtonTestRun.click();
+        clickButtonTestRunDropdown.click();
+        selectDeleteInDropdownTestProjec.click();
+        buttonDeleteTesRun.click();
+        return this;
+    }
 }

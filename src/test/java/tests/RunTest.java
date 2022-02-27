@@ -40,6 +40,16 @@ public class RunTest extends BaseTest {
         log.info(repositoryPage.getMessageYouHaveReachedALimitOfActiveRun());
     }
     @Test
+    public void c_deleteTestRun() {
+        log.info("delete test run");
+        ProjectsPage projectsPage = new LoginPage(driver)
+                .open()
+                .login(emailAdmin,passwordAdmin)
+                .deleteTestRunInPageExpressRun();
+
+        log.info("Test run deleted");
+    }
+    @Test
     public void deleteProjectFromTestRun() {
         log.info("Удаление существующего проекта");
         ProjectsPage projectsPage = new LoginPage(driver)
@@ -52,4 +62,5 @@ public class RunTest extends BaseTest {
         log.info(projectsPage.getYouDonNotHaveAnyProjectsYet());
         log.info("Проект удален");
     }
+
 }
