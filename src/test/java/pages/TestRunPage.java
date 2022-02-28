@@ -11,11 +11,15 @@ public class TestRunPage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex project-row run-case-row']//span[@class='custom-control-indicator']")
     private WebElement clickTitleTestRun;
 
-    @FindBy(xpath = "//div[@class='run-case-row-div run-case-row-title']//a")
+    @FindBy(xpath = "//div[@class='run-case-row-div run-case-row-title']//a[starts-with(text(),'Test_Authorization')]")
     private WebElement clickTitleTestRun2;
 
     @FindBy(xpath = "//h1[contains(text(),'Test_Authorization')]")
     private WebElement titleTestRun;
+
+
+    @FindBy(xpath = "//div[starts-with(text(),'Test cases')]")
+    private WebElement titleTestCase;
 
 
     @FindBy(xpath = "//a[contains(text(),'Test_Authorization')]//following::div[@class='run-case-row-div text-end run-case-row-controls']")
@@ -41,6 +45,11 @@ public class TestRunPage extends BasePage{
     @Step("get title test run")
     public String  getTitleTestRun(){
       return   titleTestRun.getText();
+    }
+
+    @Step("get title test cases without suite")
+    public String  getTestCasesWithoutSuite(){
+        return   titleTestCase.getText();
     }
 
     @Step("delete test run")
