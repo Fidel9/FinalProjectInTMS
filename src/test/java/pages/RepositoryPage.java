@@ -17,7 +17,7 @@ public class RepositoryPage extends BasePage {
 
 
     @FindBy(xpath = "//label[@class='style_checkbox-1sXFN style_checkbox-1ztec style_inHeader-18FWp']")
-    private WebElement input;
+    private WebElement input;//может упасть из за нестабильного класса
 
     @FindBy(xpath = "//button[contains(text(),'Run')]")
     private WebElement buttonRunTest;
