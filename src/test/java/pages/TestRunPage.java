@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TestRunPage extends BasePage{
 
-    @FindBy(xpath = "//div[@class='d-flex project-row run-case-row']//span")
+    @FindBy(xpath = "//div[@class='d-flex project-row run-case-row']//span[@class='custom-control-indicator']")
     private WebElement clickTitleTestRun;
 
     @FindBy(xpath = "//div[@class='run-case-row-div run-case-row-title']//a")
