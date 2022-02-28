@@ -16,7 +16,7 @@ public class RepositoryPage extends BasePage {
     private WebElement searchFieldTitleInRepo;
 
 
-    @FindBy(xpath = "//label[@class='style_checkbox-tLOSg style_checkbox-1ztec style_inHeader-18FWp']/div")
+    @FindBy(xpath = "//label[@class='style_checkbox-1sXFN style_checkbox-1ztec style_inHeader-18FWp']")
     private WebElement input;
 
     @FindBy(xpath = "//button[contains(text(),'Run')]")

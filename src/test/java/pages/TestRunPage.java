@@ -18,9 +18,6 @@ public class TestRunPage extends BasePage{
     private WebElement titleTestRun;
 
 
-    @FindBy(xpath = "//div[starts-with(text(),'Test cases')]")
-    private WebElement titleTestCase;
-
 
     @FindBy(xpath = "//a[contains(text(),'Test_Authorization')]//following::div[@class='run-case-row-div text-end run-case-row-controls']")
     private WebElement clickTestRunCaseDropdown;
@@ -30,6 +27,9 @@ public class TestRunPage extends BasePage{
 
     @FindBy(xpath = "//button[@class='btn btn-danger btn-very-wide']")
     private WebElement removeCase;
+
+    @FindBy(xpath = "//div[starts-with(text(),'Test cases')]")
+    private WebElement titleTestCase;
 
     public TestRunPage(WebDriver driver) {
         super(driver);
