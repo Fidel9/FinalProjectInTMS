@@ -20,12 +20,11 @@ public class RunTest extends BaseTest {
                 .createNewCase()
                 .createCaseRepo(TestValues.TEST_PR_REPO_AUTH_2)
                 .repository()
-                .openTestRun()
-                .clickTestRunTest_Authorization();
+                .openTestRun();
 
 
-        Assert.assertEquals(testRunPage.getTitleTestRun(),TestValues.TEST_RUN_TITLE);
-        log.info(testRunPage.getTitleTestRun());
+        Assert.assertEquals(testRunPage.getTestCasesWithoutSuite(),"Test cases without suite");
+        log.info(testRunPage.getTestCasesWithoutSuite());
     }
 
     @Test
