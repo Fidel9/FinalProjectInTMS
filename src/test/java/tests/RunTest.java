@@ -23,7 +23,7 @@ public class RunTest extends BaseTest {
                 .openTestRun()
                 .clickTestRunTest_Authorization();
 
-       // Assert.assertEquals(testRunPage.getTitleTestRun(),TestValues.TEST_RUN_TITLE);
+        Assert.assertEquals(testRunPage.getTitleTestRun(),TestValues.TEST_RUN_TITLE);
         log.info(testRunPage.getTitleTestRun());
     }
 
